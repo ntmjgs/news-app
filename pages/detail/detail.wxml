@@ -1,0 +1,19 @@
+<!-- 固定在顶部的导航栏 -->
+<view class="banner" >
+  <image class="back-btn" src="/images/arrow.png" bindtap='goback'></image>
+  <view bindtap='goback'>每日资讯</view>
+</view>
+<!-- 新闻详情 -->
+<view class="content-wrapper">
+    <view class="news-title">{{newsDetail.title}}</view>
+    <view class="news-subtitle">
+      <view wx:if="{{newsDetail.source!==''}}" class="news-source">{{newsDetail.source}}</view>
+      <view class="news-date">{{newsDetail.date}}</view>
+      <view>阅读  {{newsDetail.readCount}}</view>
+    </view>
+    <block wx:for="{{newsDetail.content}}">
+      <image wx:if="{{item.type == 'image'}}" src="{{item.src}}" ></image>
+      <view wx:if="{{item.type == 'p'}}" class="text-normal">{{item.text}}</view>
+      <view wx:if="{{item.type == 'strong'}}" class="text-strong">{{item.text}}</view>
+    </block>
+</view>
