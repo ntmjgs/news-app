@@ -1,7 +1,7 @@
 <!-- 固定在顶部的导航栏 -->
 <view class="banner" >
-  <image class="back-btn" src="/images/arrow.png" bindtap='goback'></image>
-  <view bindtap='goback'>每日资讯</view>
+  <image class="back-btn" src="/images/arrow.png" bindtap='goBack'></image>
+  <view bindtap='goBack'>每日资讯</view>
 </view>
 <!-- 新闻详情 -->
 <view class="content-wrapper">

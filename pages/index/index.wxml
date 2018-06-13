@@ -5,7 +5,7 @@
     <view>每日资讯</view>
   </view>
   <view class="nav-wrapper" bindtap="tapNav">
-    <view wx:for="{{navItems}}" class="{{navid == item.id?'nav-selected':'nav-not-selected'}}" data-navid="{{item.id}}">{{item.text}}
+    <view wx:for="{{navItems}}" wx:key="id" class="{{navid == item.id?'nav-selected':'nav-not-selected'}}" data-navid="{{item.id}}">{{item.text}}
     </view>
   </view>
 </view>
@@ -13,25 +13,27 @@
 <view class="content-wrapper">
   <!-- 页面第一条新闻 -->
   <view class="first-news" data-index="{{firstnews.id}}" bindtap="onTapNews" >
+
     <view class="first-news-title">{{firstnews.title}}</view>
     <view class="first-news-subtitle">
-      <view wx:if="{{firstnews.source!==''}}" class="first-news-source">{{firstnews.source}}</view>
+      <view wx:if="{{!!firstnews.source}}" class="first-news-source">{{firstnews.source}}</view>
       <view class="first-news-date">{{firstnews.date}}</view>
     </view>
+
     <view class="first-image-wrapper">
-      <image class="first-news-image" 
-      src="{{firstnews.firstImage===''?defaultImage:firstnews.firstImage}}"></image>
+      <image class="first-news-image" mode="widthFix"
+      src="{{firstnews.firstImage||defaultImage}}"></image>
     </view>
   </view>
   <!-- 新闻列表 -->
   <view class="list-wrapper">
-    <view wx:for="{{news}}" data-index ="{{item.id}}" bindtap="onTapNews">
+    <view wx:for="{{news}}" wx:key="id" data-index ="{{item.id}}" bindtap="onTapNews">
       <view class="onepiece">
         <view class="onepiece-title">{{item.title}}</view>
         <view class="onepiece-subtitle">
-          <view wx:if="{{item.source!==''}}" class="onepiece-source">{{item.source}}</view>
+          <view wx:if="{{!!item.source}}" class="onepiece-source">{{item.source}}</view>
           <view >{{item.date}}</view>
-          <image class="onepiece-image" src="{{item.firstImage===''?defaultImage:item.firstImage}}"></image>
+          <image class="onepiece-image" src="{{item.firstImage||defaultImage}}"></image>
         </view>
       </view>
     </view>

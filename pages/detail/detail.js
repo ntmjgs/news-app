@@ -10,7 +10,7 @@ Page({
     })
     this.getNewsDetail()
   },
-  goback(){
+  goBack(){
     wx.navigateBack()
   },
   //自定义导航栏看不到下拉刷新的...,因此用loading页面显示刷新效果
